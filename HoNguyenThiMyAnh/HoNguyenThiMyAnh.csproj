@@ -2310,6 +2310,8 @@
     <Content Include="Areas\admin\Views\Product\Index.cshtml" />
     <Content Include="Areas\admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\jquery-3.4.1.js" />
     <Content Include="Scripts\jquery-3.4.1.min.js" />
