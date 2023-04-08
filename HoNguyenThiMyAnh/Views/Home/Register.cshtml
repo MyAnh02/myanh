@@ -1,18 +1,19 @@
-﻿@model HoNguyenThiMyAnh.Context.User
+﻿@model HoNguyenThiMyAnh.Context.Users
 
 @{
     ViewBag.Title = "Register";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/admin/Views/Shared/_Layout.cshtml";
 }
 <div class="content-wrapper">
     <h2>Register</h2>
+
 
     @using (Html.BeginForm())
     {
         @Html.AntiForgeryToken()
 
         <div class="form-horizontal">
-            <h4>User</h4>
+            <h4>Users</h4>
             <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <div class="form-group">
@@ -48,10 +49,10 @@
             </div>
 
             <div class="form-group">
-                @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
+                @Html.LabelFor(model => model.lsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
-                    @Html.EditorFor(model => model.IsAdmin, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.IsAdmin, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.lsAdmin, new { htmlAttributes = new { @class = "form-control" } })
+                    @Html.ValidationMessageFor(model => model.lsAdmin, "", new { @class = "text-danger" })
                 </div>
             </div>
 
@@ -66,4 +67,4 @@
     <div>
         @Html.ActionLink("Back to List", "Index")
     </div>
-    </div>
+</div>

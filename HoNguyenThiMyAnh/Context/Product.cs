@@ -30,11 +30,8 @@ namespace HoNguyenThiMyAnh.Context
         public Nullable<bool> ShowOnHomePage { get; set; }
         public Nullable<int> DisplayOrder { get; set; }
         public Nullable<System.DateTime> CreatedOnUtc { get; set; }
-
         public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
-
         [NotMapped]
         public System.Web.HttpPostedFileBase ImageUpload { get; set; }
-
     }
 }

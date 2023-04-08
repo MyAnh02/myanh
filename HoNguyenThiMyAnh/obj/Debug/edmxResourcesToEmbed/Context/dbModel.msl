@@ -67,13 +67,13 @@
     </EntitySetMapping>
     <EntitySetMapping Name="Users">
       <EntityTypeMapping TypeName="WEBBANHANGModel.User">
-        <MappingFragment StoreEntitySet="User">
-          <ScalarProperty Name="id" ColumnName="id" />
+        <MappingFragment StoreEntitySet="Users">
+          <ScalarProperty Name="Id" ColumnName="Id" />
           <ScalarProperty Name="FirstName" ColumnName="FirstName" />
           <ScalarProperty Name="LastName" ColumnName="LastName" />
           <ScalarProperty Name="Email" ColumnName="Email" />
           <ScalarProperty Name="Password" ColumnName="Password" />
-          <ScalarProperty Name="IsAdmin" ColumnName="IsAdmin" />
+          <ScalarProperty Name="lsAdmin" ColumnName="lsAdmin" />
         </MappingFragment>
       </EntityTypeMapping>
     </EntitySetMapping>

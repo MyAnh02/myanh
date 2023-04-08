@@ -3,12 +3,9 @@ using HoNguyenThiMyAnh.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
-using System.Web.Mvc;
-using HoNguyenThiMyAnh.Context;
-using HoNguyenThiMyAnh.Models;
 using System.Security.Cryptography;
 using System.Text;
+using System.Web.Mvc;
 
 namespace HoNguyenThiMyAnh.Controllers
 {
@@ -28,19 +25,18 @@ namespace HoNguyenThiMyAnh.Controllers
         {
             return View();
         }
-        //POST: Register
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(User _user)
+        public ActionResult Register(Users _user)
         {
             if (ModelState.IsValid)
             {
-                var check = objWEBBANHANGEntities.Users.FirstOrDefault(s => s.Email == _user.Email);
+                var check = objWEBBANHANGEntities.Users1.FirstOrDefault(s => s.Email == _user.Email);
                 if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
                     objWEBBANHANGEntities.Configuration.ValidateOnSaveEnabled = false;
-                    objWEBBANHANGEntities.Users.Add(_user);
+                    objWEBBANHANGEntities.Users1.Add(_user);
                     objWEBBANHANGEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -56,44 +52,8 @@ namespace HoNguyenThiMyAnh.Controllers
 
 
         }
-        [HttpGet]
-        public ActionResult Login()
-        {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Login(string email, string password)
-        {
-            if (ModelState.IsValid)
-            {
 
 
-                var f_password = GetMD5(password);
-                var data = objWEBBANHANGEntities.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
-                if (data.Count() > 0)
-                {
-                    //add session
-                    Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
-                    Session["Email"] = data.FirstOrDefault().Email;
-                    Session["idUser"] = data.FirstOrDefault().id;
-                    return RedirectToAction("Index");
-                }
-                else
-                {
-                    ViewBag.error = "Login failed";
-                    return RedirectToAction("Login");
-                }
-            }
-            return View();
-        }
-        //Logout
-        public ActionResult Logout()
-        {
-            Session.Clear();//remove session
-            return RedirectToAction("Login");
-        }
 
         //create a string MD5
         public static string GetMD5(string str)
@@ -111,13 +71,47 @@ namespace HoNguyenThiMyAnh.Controllers
             return byte2String;
         }
 
-
-        public ActionResult Contact()
+        [HttpGet]
+        public ActionResult Login()
         {
-            ViewBag.Message = "Your contact page.";
-
             return View();
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Login(string email, string password)
+        {
+            if (ModelState.IsValid)
+            {
+
+
+                var f_password = GetMD5(password);
+                var data = objWEBBANHANGEntities.Users1.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                if (data.Count() > 0)
+                {
+                    //add session
+                    Session["FullName"] = data.FirstOrDefault().FirstName + " " + data.FirstOrDefault().LastName;
+                    Session["Email"] = data.FirstOrDefault().Email;
+                    Session["idUser"] = data.FirstOrDefault().Id;
+                    return RedirectToAction("Index");
+                }
+                else
+                {
+                    ViewBag.error = "Login failed";
+                    return RedirectToAction("Login");
+                }
+            }
+            return View();
+        }
+
+
+
+
+        //Logout
+        public ActionResult Logout()
+        {
+            Session.Clear();//remove session
+            return RedirectToAction("Login");
+        }
     }
 }
