@@ -63,24 +63,29 @@ namespace HoNguyenThiMyAnh.Areas.admin.Controllers
         {
             this.LoadData();
 
-            try
+            if (ModelState.IsValid)
             {
-                if (objProduct.ImageUpload != null)
+                try
                 {
-                    string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
-                    string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                    fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddmmss")) + extension;
-                    objProduct.Avatar = fileName;
-                    objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items"), fileName));
+                    if (objProduct.ImageUpload != null)
+                    {
+                        string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
+                        string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
+                        fileName = fileName + extension;
+                        objProduct.Avatar = fileName;
+                        objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items/"), fileName));
+                    }
+                    objProduct.CreatedOnUtc = DateTime.Now;
+                    dbObj.Products.Add(objProduct);
+                    dbObj.SaveChanges();
+                    return RedirectToAction("Index");
                 }
-                dbObj.Products.Add(objProduct);
-                dbObj.SaveChanges();
-                return RedirectToAction("Index");
+                catch (Exception)
+                {
+                    return RedirectToAction("Index");
+                }
             }
-            catch (Exception)
-            {
-                return RedirectToAction("Index");
-            }
+            return View(objProduct);
 
         }
         [HttpGet]
@@ -98,26 +103,34 @@ namespace HoNguyenThiMyAnh.Areas.admin.Controllers
             dbObj.SaveChanges();
             return RedirectToAction("Index");
         }
+      
         [HttpGet]
-        public ActionResult Edit(int id)
+        public ActionResult Edit(int Id)
         {
-            var objProduct = dbObj.Products.Where(n => n.Id == id).FirstOrDefault();
+            var objProduct = dbObj.Products.Where(n => n.Id == Id).FirstOrDefault();
             return View(objProduct);
         }
+
         [HttpPost]
-        public ActionResult Edit(int id, Product objProduct)
+        public ActionResult Edit(int Id, Product objProduct)
         {
-            if (objProduct.ImageUpload != null)
+            if (ModelState.IsValid)
             {
-                string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
-                string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
-                fileName = fileName + "_" + long.Parse(DateTime.Now.ToString("yyyyMMddhhmmss")) + extension;
-                objProduct.Avatar = fileName;
-                objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/"), fileName));
+                if (objProduct.ImageUpload != null)
+                {
+                    string fileName = Path.GetFileNameWithoutExtension(objProduct.ImageUpload.FileName);
+                    string extension = Path.GetExtension(objProduct.ImageUpload.FileName);
+                    fileName = fileName + extension;
+                    objProduct.Avatar = fileName;
+                    objProduct.ImageUpload.SaveAs(Path.Combine(Server.MapPath("~/Content/images/items/"), fileName));
+                }
+                objProduct.UpdatedOnUtc = DateTime.Now;
+                dbObj.Products.Add(objProduct);
+                dbObj.SaveChanges();
+                return RedirectToAction("Index");
+
             }
-            dbObj.Entry(objProduct).State = EntityState.Modified;
-            dbObj.SaveChanges();
-            return RedirectToAction("Index");
+            return View(objProduct);
         }
         void LoadData()
         {

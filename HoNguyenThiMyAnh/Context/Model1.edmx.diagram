@@ -7,9 +7,10 @@
       <Diagram DiagramId="e14c76abacd641fd8ed2d679bda8a1be" Name="Diagram1">
         <EntityTypeShape EntityType="WEBBANHANGModel.Brand" Width="1.5" PointX="0.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBBANHANGModel.Category" Width="1.5" PointX="2.75" PointY="0.75" IsExpanded="true" />
-        <EntityTypeShape EntityType="WEBBANHANGModel.Order" Width="1.5" PointX="4.75" PointY="0.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBBANHANGModel.Product" Width="1.5" PointX="0.75" PointY="4.75" IsExpanded="true" />
         <EntityTypeShape EntityType="WEBBANHANGModel.Users" Width="1.5" PointX="2.75" PointY="4.75" IsExpanded="true" />
+        <EntityTypeShape EntityType="WEBBANHANGModel.Order" Width="1.5" PointX="5.5" PointY="1" />
+        <EntityTypeShape EntityType="WEBBANHANGModel.OrderDetail" Width="1.5" PointX="4.75" PointY="4.625" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

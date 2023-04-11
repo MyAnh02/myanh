@@ -138,6 +138,7 @@
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
     <Compile Include="Areas\admin\Controllers\myanhController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
+    <Compile Include="Areas\admin\Controllers\ValidateRequestAttribute.cs" />
     <Compile Include="Common.cs" />
     <Compile Include="Context\Brand.cs">
       <DependentUpon>Model1.tt</DependentUpon>
@@ -163,6 +164,9 @@
     <Compile Include="Context\Order.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
+    <Compile Include="Context\OrderDetail.cs">
+      <DependentUpon>Model1.tt</DependentUpon>
+    </Compile>
     <Compile Include="Context\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
@@ -178,6 +182,7 @@
     <Compile Include="Controllers\ListingsController.cs" />
     <Compile Include="Controllers\Listing_large.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
     <Compile Include="Global.asax.cs">
@@ -2316,7 +2321,6 @@
     <Content Include="Areas\admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\admin\Views\Product\Details.cshtml" />
     <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
-    <Content Include="Areas\admin\Views\Product\Edit.cshtml" />
     <Content Include="Scripts\ckeditor\bender-runner.config.json" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
@@ -2338,6 +2342,7 @@
     <Content Include="Context\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
     <Content Include="Scripts\ckeditor\build-config.js" />
@@ -2683,7 +2688,6 @@
     <Content Include="Views\Category\Category.cshtml" />
     <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Content\Content.cshtml" />
-    <Content Include="Views\Cart\Cart.cshtml" />
     <Content Include="Views\Listing\Large.cshtml" />
     <Content Include="Views\Listings\Grid.cshtml" />
     <Content Include="Views\Blank\Blank.cshtml" />
@@ -2692,6 +2696,8 @@
     <Content Include="Views\Category\ProductCategory.cshtml" />
     <Content Include="Views\Home\Register.cshtml" />
     <Content Include="Views\Home\Login.cshtml" />
+    <Content Include="Views\Payment\Index.cshtml" />
+    <Content Include="Views\Cart\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

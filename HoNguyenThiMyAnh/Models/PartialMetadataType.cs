@@ -1,4 +1,5 @@
-﻿using System;
+﻿using HoNguyenThiMyAnh.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -14,7 +15,7 @@ namespace HoNguyenThiMyAnh.Context
 
     }
     [MetadataType(typeof(ProductMasterData))]
-    public partial class ProductMasterData
+    public partial class Product
     {
         [NotMapped]
 
