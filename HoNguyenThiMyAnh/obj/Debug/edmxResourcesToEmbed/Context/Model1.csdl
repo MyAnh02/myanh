@@ -49,24 +49,13 @@
     <Property Name="CreatedOnUtc" Type="DateTime" Precision="3" />
     <Property Name="UpdatedOnUtc" Type="DateTime" Precision="3" />
   </EntityType>
-  <EntityType Name="Users">
-    <Key>
-      <PropertyRef Name="Id" />
-    </Key>
-    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
-    <Property Name="lsAdmin" Type="Boolean" />
-  </EntityType>
   <EntityContainer Name="WEBBANHANGEntities" annotation:LazyLoadingEnabled="true">
     <EntitySet Name="Brands" EntityType="Self.Brand" />
     <EntitySet Name="Categories" EntityType="Self.Category" />
     <EntitySet Name="Products" EntityType="Self.Product" />
-    <EntitySet Name="Users1" EntityType="WEBBANHANGModel.Users" />
     <EntitySet Name="Orders" EntityType="WEBBANHANGModel.Order" />
     <EntitySet Name="OrderDetails" EntityType="WEBBANHANGModel.OrderDetail" />
+    <EntitySet Name="Users" EntityType="WEBBANHANGModel.User" />
   </EntityContainer>
   <EntityType Name="Order">
     <Key>
@@ -86,5 +75,16 @@
     <Property Name="OrderId" Type="Int32" />
     <Property Name="ProductId" Type="Int32" />
     <Property Name="Quantity" Type="Int32" />
+  </EntityType>
+  <EntityType Name="User">
+    <Key>
+      <PropertyRef Name="Id" />
+    </Key>
+    <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="FirstName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="LastName" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="Password" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="lsAdmin" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
   </EntityType>
 </Schema>

@@ -1,4 +1,4 @@
-﻿@model HoNguyenThiMyAnh.Context.Users
+﻿@model HoNguyenThiMyAnh.Context.User
 
 
 @{
@@ -10,25 +10,30 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-header">
-                    Login
+                    Đăng nhập    
                 </div>
                 <div class="card-body">
+                    <a href="#" class="btn btn-facebook btn-block mb-2"> <i class="fab fa-facebook-f"></i> &nbsp  Đăng nhập bằng Facebook</a>
+                    <a href="#" class="btn btn-google btn-block mb-4"> <i class="fab fa-google"></i> &nbsp  Đăng nhập bằng Google</a>
+
                     @using (Html.BeginForm("Login", "Home", FormMethod.Post))
                     {
                         @Html.AntiForgeryToken()
                         <div class="form-group">
-                            @Html.LabelFor(m => m.Email)
-                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = "Email" })
+                            @* @Html.LabelFor(m => m.Email) *@
+                            @Html.TextBoxFor(m => m.Email, "", new { @class = "form-control", @placeholder = " Nhập Email" })
 
                         </div>
                         <div class="form-group">
-                            @Html.LabelFor(m => m.Password)
-                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Password" })
+                            <lablel>Mật khẩu</lablel>
+
+                            @Html.PasswordFor(m => m.Password, new { @class = "form-control", @placeholder = "Nhập mật khẩu" })
                         </div>
                         <div class="form-group">
-                            <input type="submit" name="submit" class="btn btn-primary" value="Login" />
+                            <input type="submit" name="submit" class="btn btn-primary" value="Tự đăng nhập" />
                         </div>
                     }
+                    <p class="text-center mt-4">Chưa có tài khoản? <a href="~/Home/Register/">Đăng ký</a></p>
                 </div>
             </div>
         </div>

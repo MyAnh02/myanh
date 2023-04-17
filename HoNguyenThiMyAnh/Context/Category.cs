@@ -14,8 +14,9 @@ namespace HoNguyenThiMyAnh.Context
 
 using System;
     using System.Collections.Generic;
-    
-public partial class Category
+    using System.ComponentModel.DataAnnotations.Schema;
+
+    public partial class Category
 {
 
     public int id { get; set; }
@@ -36,6 +37,8 @@ public partial class Category
 
     public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
 
+        
+       
 }
 
 }

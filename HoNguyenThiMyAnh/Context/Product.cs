@@ -14,9 +14,8 @@ namespace HoNguyenThiMyAnh.Context
 
 using System;
     using System.Collections.Generic;
-    using System.ComponentModel.DataAnnotations.Schema;
-
-    public partial class Product
+    
+public partial class Product
 {
 
     public int Id { get; set; }
@@ -51,6 +50,6 @@ using System;
 
     public Nullable<System.DateTime> UpdatedOnUtc { get; set; }
 
-    }
+}
 
 }

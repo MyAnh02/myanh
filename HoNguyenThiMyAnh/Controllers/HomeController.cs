@@ -27,16 +27,16 @@ namespace HoNguyenThiMyAnh.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Register(Users _user)
+        public ActionResult Register(User _user)
         {
             if (ModelState.IsValid)
             {
-                var check = objWEBBANHANGEntities.Users1.FirstOrDefault(s => s.Email == _user.Email);
+                var check = objWEBBANHANGEntities.Users.FirstOrDefault(s => s.Email == _user.Email);
                 if (check == null)
                 {
                     _user.Password = GetMD5(_user.Password);
                     objWEBBANHANGEntities.Configuration.ValidateOnSaveEnabled = false;
-                    objWEBBANHANGEntities.Users1.Add(_user);
+                    objWEBBANHANGEntities.Users.Add(_user);
                     objWEBBANHANGEntities.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -86,7 +86,7 @@ namespace HoNguyenThiMyAnh.Controllers
 
 
                 var f_password = GetMD5(password);
-                var data = objWEBBANHANGEntities.Users1.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
+                var data = objWEBBANHANGEntities.Users.Where(s => s.Email.Equals(email) && s.Password.Equals(f_password)).ToList();
                 if (data.Count() > 0)
                 {
                     //add session
@@ -104,14 +104,20 @@ namespace HoNguyenThiMyAnh.Controllers
             return View();
         }
 
-
-
-
         //Logout
         public ActionResult Logout()
         {
             Session.Clear();//remove session
             return RedirectToAction("Login");
+        }
+        public ActionResult Seach(String seach,int id=0)
+        {
+            return View();
+        }
+
+        public ActionResult Contact()
+        {
+            return View();
         }
     }
 }

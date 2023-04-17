@@ -4,7 +4,6 @@
 
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 
 <style>
@@ -181,11 +180,11 @@
         @Html.ActionLink("Tạo mới", "Create")
     </p>
 
-    @using (Html.BeginForm("Index", "Product", FormMethod.Get))
+    @using (Html.BeginForm("Index", "Category", FormMethod.Get))
     {
         <p>
-            Tên sản phẩm:  @Html.TextBox("SearchString", ViewBag.CurrentFilter as string)
-            <input type="submit" value="Tìm kiếm" />
+            Tìm Danh mục:&nbsp @Html.TextBox("SearchString", ViewBag.CurrentFilter as string, new { @placeholder = "Nhập tên danh mục" })
+            <input type="submit" class="btn btn-sm btn-outline-primary " value="Tìm kiếm" />
         </p>
     }
 
@@ -221,6 +220,7 @@
             <th>
                 @Html.DisplayNameFor(model => model.FirstOrDefault().BrandId)
             </th>
+            
             <th></th>
         </tr>
 
@@ -257,10 +257,11 @@
                 <td>
                     @Html.DisplayFor(modelItem => item.BrandId)
                 </td>
+
                 <td>
-                    <a href="@Url.Action("Edit","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-edit text-white"></i></a>
-                    <a href="@Url.Action("Details","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-eye text-white"></i></a>
-                    <a href="@Url.Action("Delete","Product",new { id = item.Id })" class="btn btn-ms btn-primary "> <i class="fas fa-trash-alt text-white"></i></a>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
                 </td>
             </tr>
         }

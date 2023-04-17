@@ -16,8 +16,6 @@ namespace HoNguyenThiMyAnh.Context
         [Required]
         public string Password { get; set; }
 
-        public Nullable<bool> IsAdmin { get; set; }
-
-        public Nullable<bool> Sex { get; set; }
+        public Nullable<bool> lsAdmin { get; set; }
     }
 }

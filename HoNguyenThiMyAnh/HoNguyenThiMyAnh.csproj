@@ -136,6 +136,8 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Areas\admin\adminAreaRegistration.cs" />
+    <Compile Include="Areas\admin\Controllers\BrandController.cs" />
+    <Compile Include="Areas\admin\Controllers\CategoryController.cs" />
     <Compile Include="Areas\admin\Controllers\myanhController.cs" />
     <Compile Include="Areas\admin\Controllers\ProductController.cs" />
     <Compile Include="Areas\admin\Controllers\ValidateRequestAttribute.cs" />
@@ -170,7 +172,7 @@
     <Compile Include="Context\Product.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
-    <Compile Include="Context\Users.cs">
+    <Compile Include="Context\User.cs">
       <DependentUpon>Model1.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BlankController.cs" />
@@ -178,6 +180,7 @@
     <Compile Include="Controllers\CategoryController.cs" />
     <Compile Include="Controllers\ComponentsController.cs" />
     <Compile Include="Controllers\ContentController.cs" />
+    <Compile Include="Controllers\GirlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ListingsController.cs" />
     <Compile Include="Controllers\Listing_large.cs" />
@@ -185,13 +188,17 @@
     <Compile Include="Controllers\PaymentController.cs" />
     <Compile Include="Controllers\ProductController.cs" />
     <Compile Include="Controllers\RegisterController.cs" />
+    <Compile Include="Controllers\SeachController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\BrandMasterData.cs" />
     <Compile Include="Models\CartModel.cs" />
+    <Compile Include="Models\CategoryMasterData.cs" />
     <Compile Include="Models\HomeModel.cs" />
     <Compile Include="Models\PartialMetadataType.cs" />
     <Compile Include="Models\ProductMasterData.cs" />
+    <Compile Include="Models\SeachController.cs" />
     <Compile Include="Models\UserMasterData.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -2317,10 +2324,6 @@
     <Content Include="..\.editorconfig">
       <Link>.editorconfig</Link>
     </Content>
-    <Content Include="Areas\admin\Views\Product\Index.cshtml" />
-    <Content Include="Areas\admin\Views\Product\Create.cshtml" />
-    <Content Include="Areas\admin\Views\Product\Details.cshtml" />
-    <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
     <Content Include="Scripts\ckeditor\bender-runner.config.json" />
     <Content Include="Scripts\ckeditor\CHANGES.md" />
     <Content Include="Scripts\ckeditor\LICENSE.md" />
@@ -2342,6 +2345,20 @@
     <Content Include="Context\Model1.edmx.diagram">
       <DependentUpon>Model1.edmx</DependentUpon>
     </Content>
+    <Content Include="Areas\admin\Views\Category\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Category\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Brand\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Brand\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Brand\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Brand\Edit.cshtml" />
+    <Content Include="Areas\admin\Views\Brand\Create.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Index.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Details.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Delete.cshtml" />
+    <Content Include="Areas\admin\Views\Product\Create.cshtml" />
     <Content Include="Areas\admin\Views\Product\Edit.cshtml" />
     <None Include="Scripts\jquery-3.4.1.intellisense.js" />
     <Content Include="Scripts\ckeditor\adapters\jquery.js" />
@@ -2686,10 +2703,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Product\Detail.cshtml" />
     <Content Include="Views\Category\Category.cshtml" />
-    <Content Include="Views\Login\Login.cshtml" />
     <Content Include="Views\Content\Content.cshtml" />
-    <Content Include="Views\Listing\Large.cshtml" />
-    <Content Include="Views\Listings\Grid.cshtml" />
     <Content Include="Views\Blank\Blank.cshtml" />
     <Content Include="Views\Register\Register.cshtml" />
     <Content Include="Views\Components\Components.cshtml" />
@@ -2698,6 +2712,9 @@
     <Content Include="Views\Home\Login.cshtml" />
     <Content Include="Views\Payment\Index.cshtml" />
     <Content Include="Views\Cart\Index.cshtml" />
+    <Content Include="Views\Home\Seach.cshtml" />
+    <Content Include="Views\Girl\Listing.cshtml" />
+    <Content Include="Views\Girl\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

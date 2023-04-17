@@ -18,8 +18,8 @@
                                 @foreach (var item in Model.ListCategory)
                                 {
                                     <li>
-                                
-                                        @Html.ActionLink(item.Name,"ProductCategory","Category", new { @Id = item.id }, null)
+
+                                        @Html.ActionLink(item.Name, "ProductCategory", "Category", new { @Id = item.id }, null)
                                     </li>
                                 }
 
@@ -50,11 +50,11 @@
                             </div>
                             <a class="carousel-control-prev" href="#carousel1_indicator" role="button" data-slide="prev">
                                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Previous</span>
+                                <span class="sr-only">Trước</span>
                             </a>
                             <a class="carousel-control-next" href="#carousel1_indicator" role="button" data-slide="next">
                                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                                <span class="sr-only">Next</span>
+                                <span class="sr-only">Tiếp</span>
                             </a>
                         </div>
                         <!-- ==================  COMPONENT SLIDER BOOTSTRAP end.// ==================  .// -->
@@ -68,9 +68,9 @@
                                 <div class="card-banner border-bottom">
                                     <div class="py-3" style="width:80%">
                                         <h6 class="card-title">@item.Name </h6>
-                                        <a href="#" class="btn btn-secondary btn-sm">Nguồn bây giờ </a>
+                                        <a href="@Url.Action("ProductCategory","Category", new { @Id = item.id }, null)" class="btn btn-secondary btn-sm">Nguồn bây giờ </a>
                                     </div>
-                                    <img src="~/Content/images/items/ip3.jpg" height="80" class="img-bg">
+                                    <img src="~/Content/images/items/@item.Avatar" height="80" class="img-bg">
                                 </div>
                             }
 
@@ -126,7 +126,7 @@
     <!-- =============== SECTION 1 =============== -->
     <section class="padding-bottom">
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">APPLE</h4>
+            <h4 class="title-section text-uppercase">IPHONE</h4>
         </header>
 
         <div class="card card-home-category">
@@ -134,21 +134,66 @@
                 <div class="col-md-3">
 
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Sản phẩm thịnh hành nhất </h5>
-                        <p></p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                        <h5 class="title">Giới thiệu sản phẩm</h5>
+                        <p>
+                            IPhone là một thiết bị điện thoại thông minh được thiết kế và phân phối bởi Apple Inc. Đây là một trong những tập đoàn công nghệ đắt giá bậc nhất trên thế giới.
+                            Tiền thân của Apple Inc là Apple Computer Inc được sáng lập bởi: Steve Wozniak, Steve Jobs và Ronald Wayne. Trong đó, người đóng vị trí quan trọng nhất với sự ra đời của iPhone là giám đốc điều hành Steve Jobs.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Tìm hiểu thêm</a>
                         <img src="~/Content/images/items/ip12.jpg" class="img-bg">
                     </div>
 
                 </div> <!-- col.// -->
                 <div class="col-md-9">
                     <ul class="row no-gutters bordered-cols">
-                        @foreach (var item in Model.ListProduct.Where(n=>n.BrandId ==1))
+                        @foreach (var item in Model.ListProduct.Where(n => n.CategoryId == 1))
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Detail","Product", new {Id = item.Id})" class="item">
                                     <div class="card-body">
-                                        <h6 class="title">Điện thoại được người dùng tin cậy </h6>
+                                        <h6 class="title"></h6>
+                                        <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
+                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+    <!-- =============== SECTION DEAL // END =============== -->
+    <!-- =============== SECTION 1 =============== -->
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">MÁY TÍNH</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">Giới thiệu sản phẩm các dòng Laptop</h5>
+                        <p>
+                            Hiện nay trên thị trường có rất nhiều dòng laptop khác nhau từ các nhà sản xuất khác nhau. Sau đây là một số dòng laptop nổi tiếng và phổ biến:
+                            1.MacBook,2.Dell XPS,4.HP Spectre,5.ASUS ZenBook,6.Acer Swift,7.MSI Gaming.
+                            </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Tìm hiểu thêm</a>
+                        <img src="~/Content/images/items/laptop2.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @foreach (var item in Model.ListProduct.Where(n => n.CategoryId == 2))
+                        {
+                            <li class="col-6 col-lg-3 col-md-4">
+                                <a href="@Url.Action("Detail","Product", new {Id = item.Id})" class="item">
+                                    <div class="card-body">
+                                        <h6 class="title"></h6>
                                         <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
                                         <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
                                     </div>
@@ -173,21 +218,65 @@
                 <div class="col-md-3">
 
                     <div class="home-category-banner bg-light-orange">
-                        <h5 class="title">Mặc hàng điện thoại</h5>
-                        <p>Consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. </p>
-                        <a href="#" class="btn btn-outline-primary rounded-pill">Source now</a>
+                        <h5 class="title">Giới thiệu sản phẩm</h5>
+                        <p>
+                            Nâng tầm trải nghiệm các siêu phẩm Galaxy với các hình thức hỗ trợ mới nhất như trả theo tháng, ưu đãi
+                            trực tiếp khi thu cũ đổi mới điện thoại cũ kể cả hỏng hóc, dịch vụ bảo hành Samsung Care+ để bạn
+                            yên tâm trải nghiệm..
+                        </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Tìm hiểu thêm</a>
                         <img src="~/Content/images/items/ipad5.jpg" class="img-bg">
                     </div>
 
                 </div> <!-- col.// -->
                 <div class="col-md-9">
                     <ul class="row no-gutters bordered-cols">
-                        @foreach (var item in Model.ListProduct.Where(n => n.BrandId == 2))
+                        @foreach (var item in Model.ListProduct.Where(n => n.CategoryId == 21))
                         {
                             <li class="col-6 col-lg-3 col-md-4">
-                                <a href="#" class="item">
+                                <a href="@Url.Action("Detail","Product", new {Id = item.Id})" class="item">
                                     <div class="card-body">
-                                        <h6 class="title">Well made women clothes with trending collection  </h6>
+                                        <h6 class="title"> </h6>
+                                        <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
+                                        <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
+                                    </div>
+                                </a>
+                            </li>
+                        }
+                    </ul>
+                </div> <!-- col.// -->
+            </div> <!-- row.// -->
+        </div> <!-- card.// -->
+    </section>
+    <!-- =============== SECTION 1 END =============== -->
+    <!-- =============== SECTION 2 =============== -->
+    <section class="padding-bottom">
+        <header class="section-heading heading-line">
+            <h4 class="title-section text-uppercase">PHỤ KIỆN ĐIỆN THOẠI</h4>
+        </header>
+
+        <div class="card card-home-category">
+            <div class="row no-gutters">
+                <div class="col-md-3">
+
+                    <div class="home-category-banner bg-light-orange">
+                        <h5 class="title">Giới thiệu sản phẩm phụ kiện</h5>
+                        <p>
+                            Các phụ kiện đi kèm với điện thoại di động có thể khác nhau tùy thuộc vào từng loại điện thoại và nhà sản xuất, tuy nhiên, có một số phụ kiện chung đi kèm với hầu hết các điện thoại di động.
+                        </p>
+                        <a href="#" class="btn btn-outline-primary rounded-pill">Tìm hiểu thêm</a>
+                        <img src="~/Content/images/items/pk6.jpg" class="img-bg">
+                    </div>
+
+                </div> <!-- col.// -->
+                <div class="col-md-9">
+                    <ul class="row no-gutters bordered-cols">
+                        @foreach (var item in Model.ListProduct.Where(n => n.CategoryId == 4))
+                        {
+                            <li class="col-6 col-lg-3 col-md-4">
+                                <a href="@Url.Action("Detail","Product", new {Id = item.Id})" class="item">
+                                    <div class="card-body">
+                                        <h6 class="title"> </h6>
                                         <img class="img-sm float-right" src="~/Content/images/items/@item.Avatar">
                                         <p class="text-muted"><i class="fa fa-map-marker-alt"></i> @item.Name</p>
                                     </div>
@@ -205,17 +294,16 @@
     <section class="padding-bottom">
 
         <header class="section-heading heading-line">
-            <h4 class="title-section text-uppercase">YÊU CẦU ĐỊNH LƯỢNG</h4>
+            <h4 class="title-section text-uppercase">TƯ VẤN KHÁCH HÀNG</h4>
         </header>
 
         <div class="row">
             <div class="col-md-8">
                 <div class="card-banner banner-quote overlay-gradient" style="background-image: url('~/Content/images/banners/banner9.jpg');">
                     <div class="card-img-overlay white">
-                        <h3 class="card-title">An easy way to send request to suppliers</h3>
+                        <h3 class="card-title">Tư vấn khách hàng</h3>
                         <p class="card-text" style="max-width: 400px">
-                            Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod
-                            tempor incididunt.
+                            Nhu cầu khách hàng, liên hệ
                         </p>
                         <a href="" class="btn btn-primary rounded-pill">Tìm hiểu thêm</a>
                     </div>
@@ -224,35 +312,35 @@
             <div class="col-md-4">
 
                 <div class="card card-body">
-                    <h4 class="title py-3">Một yêu cầu, nhiều báo giá</h4>
+                    <h4 class="title py-3">Điền thông tin khách hàng</h4>
                     <form>
                         <div class="form-group">
-                            <input class="form-control" name="" placeholder="What are you looking for?" type="text">
+                            <input class="form-control" name="" placeholder="Gmail,Số điện thoại" type="text">
                         </div>
                         <div class="form-group">
                             <div class="input-group">
-                                <input class="form-control" placeholder="Quantity" name="" type="text">
+                                <input class="form-control" placeholder="Số lượng" name="" type="text">
                                 <select class="custom-select form-control">
-                                    <option>Pieces</option>
-                                    <option>Litres</option>
-                                    <option>Tons</option>
-                                    <option>Gramms</option>
+                                    <option>Mẫu</option>
+                                    <option>Màu sắc</option>
+                                    <option>Cấu hình</option>
+                                    <option>Trọng lượng</option>
                                 </select>
                             </div>
                         </div>
                         <div class="form-group text-muted">
-                            <p>Select template type:</p>
+                            <p>Chọn loại mẫu:</p>
                             <label class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="option1">
-                                <div class="form-check-label">Request price</div>
+                                <div class="form-check-label">Yêu cầu giá</div>
                             </label>
                             <label class="form-check form-check-inline">
                                 <input class="form-check-input" type="checkbox" value="option2">
-                                <div class="form-check-label">Request a sample</div>
+                                <div class="form-check-label">Yêu cầu mẫu</div>
                             </label>
                         </div>
                         <div class="form-group">
-                            <button class="btn btn-warning">Request for quote</button>
+                            <button class="btn btn-warning">Yêu cầu báo giá</button>
                         </div>
                     </form>
                 </div>
@@ -270,11 +358,11 @@
         </header>
 
         <div class="row row-sm">
-            @foreach (var item in Model.ListProduct.Where(n=>n.TypeId == 2).Take(6))
+            @foreach (var item in Model.ListProduct.Where(n => n.TypeId == 2).Take(6))
             {
                 <div class="col-xl-2 col-lg-3 col-md-4 col-6">
                     <div href="#" class="card card-sm card-product-grid">
-                        <a href="#" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
+                        <a href="@Url.Action("Detail","Product", new {Id = item.Id})" class="img-wrap"> <img src="~/Content/images/items/@item.Avatar"> </a>
                         <figcaption class="info-wrap">
                             <a href="#" class="title">@item.Name</a>
                             <div class="price mt-1">@item.Price</div> <!-- price-wrap.// -->
@@ -341,15 +429,15 @@
         </header>
 
         <ul class="row mt-4">
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/CN.png"> <span>China</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/DE.png"> <span>Germany</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/AU.png"> <span>Australia</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/RU.png"> <span>Russia</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/IN.png"> <span>India</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/GB.png"> <span>England</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/TR.png"> <span>Turkey</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/CN.png"> <span>Trung Quốc</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/DE.png"> <span>Đức</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/AU.png"> <span>Úc</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/RU.png"> <span>Nga</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/IN.png"> <span>Ấn Độ</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/GB.png"> <span>Anh</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/TR.png"> <span>Tây Ban Nha</span> </a></li>
             <li class="col-md col-6"><a href="#" class="icontext"> <img class="icon-flag-sm" src="~/Content/images/icons/flags/UZ.png"> <span>Uzbekistan</span> </a></li>
-            <li class="col-md col-6"><a href="#" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span>More regions</span> </a></li>
+            <li class="col-md col-6"><a href="#" class="icontext"> <i class="mr-3 fa fa-ellipsis-h"></i> <span>Nhiều khu vực hơn</span> </a></li>
         </ul>
     </section>
     <!-- =============== SECTION REGION .//END =============== -->
@@ -363,7 +451,7 @@
 <section class="section-subscribe padding-y-lg">
     <div class="container">
 
-        <p class="pb-2 text-center text-white">Delivering the latest product trends and industry news straight to your inbox</p>
+        <p class="pb-2 text-center text-white">Cung cấp các xu hướng sản phẩm mới nhất và tin tức ngành trực tiếp vào hộp thư đến của bạn</p>
 
         <div class="row justify-content-md-center">
             <div class="col-lg-5 col-md-6">
@@ -372,10 +460,10 @@
                         <input class="form-control border-0" placeholder="Your Email" type="email">
                     </div> <!-- col.// -->
                     <div class="col-md-4 col-5">
-                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i> Subscribe </button>
+                        <button type="submit" class="btn btn-block btn-warning"> <i class="fa fa-envelope"></i>  Đăng ký </button>
                     </div> <!-- col.// -->
                 </form>
-                <small class="form-text text-white-50">We’ll never share your email address with a third-party. </small>
+                <small class="form-text text-white-50">Chúng tôi sẽ không bao giờ chia sẻ địa chỉ email của bạn với bên thứ ba.</small>
             </div> <!-- col-md-6.// -->
         </div>
 
